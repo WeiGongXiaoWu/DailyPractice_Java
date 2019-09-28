@@ -1,0 +1,73 @@
+// Copyright(C) 2000-2003 Yoshinori Oota All rights reserved.
+
+public class FactoryMethodSample
+{
+    static public Creator Create(String str)
+    {
+        if (str.equals("A"))
+        {
+            return new CreatorA();
+        }
+        else if (str.equals("B"))
+        {
+            return new CreatorB();
+        }
+        return null;
+    }
+
+    static public void main(String[] args)
+    {
+        Creator creator1 = Create("A"); // 调用Create(String str)方法，创造一个CreatorA()对象
+        Creator creator2 = Create("B"); // 调用Create(String str)方法，创造一个CreatorB()对象
+
+        Product product1 = creator1.FactoryMethod();
+        Product product2 = creator2.FactoryMethod();
+
+        product1.Operation();
+        product2.Operation();
+    }
+}
+
+//抽象类被CreatorA和CreatorB实现
+abstract class Creator
+{
+	// 只有等待被子类实现的方法
+    abstract public Product FactoryMethod();
+}
+
+class CreatorA extends Creator
+{
+    public Product FactoryMethod()
+    {
+        return new ProductA();  //创建一个ProductA()对象返回
+    }
+}
+
+class CreatorB extends Creator
+{
+    public Product FactoryMethod()
+    {
+        return new ProductB();  //创建一个ProductB()对象返回
+    }
+}
+
+abstract class Product
+{
+    abstract void Operation();
+}
+
+class ProductA extends Product
+{
+    public void Operation()
+    {
+        System.out.println("ProductA");
+    }
+}
+
+class ProductB extends Product
+{
+    public void Operation()
+    {
+        System.out.println("ProductB");
+    }
+}
