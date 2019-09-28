@@ -1,0 +1,123 @@
+// Copyright(C) 2000-2003 Yoshinori Oota All rights reserved.
+
+public class AbstractFactorySample
+{
+    static AbstractFactory Create(String sw)
+    {
+        if (sw.equals("A"))
+        {
+            return new AbstractFactoryA();
+        }
+        else if (sw.equals("B"))
+        {
+            return new AbstractFactoryB();
+        }
+        return null;
+    }
+
+    static public void main(String[] args)
+    {
+		// create factory a by using a method
+        AbstractFactory factory = Create("A");
+
+        // create product a and product b
+        ProductA a = factory.CreateProductA();
+        ProductB b = factory.CreateProductB();
+
+        // what the two products will do?
+        a.Operation();
+        b.Operation();
+
+        // create factory b by using a method
+        factory = Create("B");
+
+        // create product a and product b
+        a = factory.CreateProductA();
+        b = factory.CreateProductB();
+
+        // what the two products will do?
+        a.Operation();
+        b.Operation();
+    }
+}
+
+// abstract class
+abstract class AbstractFactory
+{
+    abstract public ProductA CreateProductA();
+    abstract public ProductB CreateProductB();
+}
+
+// concrete class
+class AbstractFactoryA extends AbstractFactory
+{
+    public ProductA CreateProductA()
+    {
+        return new ProductA1();
+    }
+    public ProductB CreateProductB()
+    {
+        return new ProductB1();
+    }
+}
+
+// concrete class
+class AbstractFactoryB extends AbstractFactory
+{
+    public ProductA CreateProductA()
+    {
+        return new ProductA2();
+    }
+    public ProductB CreateProductB()
+    {
+        return new ProductB2();
+    }
+}
+
+// abstract class
+abstract class ProductA
+{
+    abstract void Operation();
+}
+
+// abstract class
+abstract class ProductB
+{
+    abstract void Operation();
+}
+
+// concrete class
+class ProductA1 extends ProductA
+{
+    public void Operation()
+    {
+        System.out.println("ProductA1");
+    }
+}
+
+// concrete class
+class ProductB1 extends ProductB
+{
+    public void Operation()
+    {
+        System.out.println("ProductB1");
+    }
+}
+
+// concrete class
+class ProductA2 extends ProductA
+{
+    public void Operation()
+    {
+        System.out.println("ProductA2");
+    }
+}
+
+// concrete class
+class ProductB2 extends ProductB
+{
+    public void Operation()
+    {
+        System.out.println("ProductB2");
+    }
+}
