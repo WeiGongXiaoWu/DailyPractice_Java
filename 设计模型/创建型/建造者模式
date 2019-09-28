@@ -1,0 +1,98 @@
+// Copyright(C) 2000-2003 Yoshinori Oota All rights reserved.
+
+import java.util.*;
+
+public class BuilderSample {
+    static public void main(String[] args) {
+        Director director = new Director();
+        Builder builder = new Builder();
+        director.Construct(builder);
+        Component tree = builder.GetResult();
+        tree.print(0);
+    }
+}
+
+class Director {
+    public void Construct(Builder builder) {
+        // 次のような Composite構造を生成する
+        // Composite("Root") -+- Leaf("L1")
+        //                    +- Leaf("L2")
+        //                    +- Composite("A") -+-Leaf("L3")
+        //                                       +-Leaf("L4")
+        builder.BuildLeaf("L1");
+        builder.BuildLeaf("L2");
+        builder.BuildComposite("A");
+        builder.ChangeCurrent("A");
+        builder.BuildLeaf("L3");
+        builder.BuildLeaf("L4");
+    }
+}
+
+class Builder {
+    private Composite _root = new Composite("Root");
+    private Composite _curComposite = _root;
+    public void BuildLeaf(String id) {
+        _curComposite.add(new Leaf(id));
+    }
+    public void BuildComposite(String id) {
+        _curComposite.add(new Composite(id));
+    }
+    public void ChangeCurrent(String id) {
+        _curComposite = (Composite)_curComposite.getComponentById(id);
+    }
+    public Component GetResult() {
+        return _root;
+    }
+}
+
+abstract class Component {
+    private String _name = null;
+    public Component(String id) {
+        _name = id;
+    }
+    public String getName() {
+        return _name;
+    }
+    protected void indent(int ind) {
+        for (int i = 0; i < ind; ++i) {
+            System.out.print("    ");
+        }
+    }
+    abstract public void print(int n);
+}
+
+class Leaf extends Component {
+    public Leaf(String id) {
+        super(id);
+    }
+    public void print(int n) {
+        indent(n);
+        System.out.println("- Leaf(" + getName() +")");
+    }
+}
+
+class Composite extends Component {
+    private HashMap _children = new HashMap();
+    public Composite(String id) {
+        super(id);
+    }
+    public void add(Component component) {
+        _children.put(component.getName(), component);
+    }
+    public Component getComponentById(String id) {
+        return (Component)_children.get(id);
+    }
+    public void print(int n) {
+        indent(n);
+        System.out.println("+ Composite(" + getName() +")");
+        Set keySet = _children.keySet();
+        Iterator it = keySet.iterator();
+        while (it.hasNext()) {
+            String name = (String)it.next();
+            Component c = (Component)_children.get(name);
+            ++n;
+            c.print(n);
+            --n;
+        }
+    }
+}
