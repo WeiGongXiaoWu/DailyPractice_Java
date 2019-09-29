@@ -58,7 +58,7 @@ class ProductA extends Product
 {
     public void Operation()
     {
-        System.out.println("ProductA");  //输出产品A
+        System.out.println("ProductA");  //输出产品A的内容
     }
 }
 
@@ -66,6 +66,6 @@ class ProductB extends Product
 {
     public void Operation()
     {
-        System.out.println("ProductB");  //输出产品B
+        System.out.println("ProductB");  //输出产品B的内容
     }
 }
