@@ -9,7 +9,7 @@ public class PrototypeSample {
     }
     static public void main(String[] args) { 
         Prototype prototype = Create('A');
-        prototype.Operation("Hello");        // 値を変えてみる
+        prototype.Operation("Hello");
         Prototype clone = prototype.Clone();
         clone.Operation();                   // 属性が引き継がれました。
 
