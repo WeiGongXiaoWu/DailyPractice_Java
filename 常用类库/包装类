@@ -1,0 +1,81 @@
+目录
+Java中常用类库之包装类
+一、包装类
+1.1 Integer 类
+1.1.1 构造方法
+1.1.2 常用方法
+1.2 Double 类
+1.2.1 构造方法
+1.2.2 常用方法
+1.3 包装类的特点
+Java中常用类库之包装类
+一、包装类
+完成一些基本数据类型的常量或变量的变换或操作，就需要使用 java.lang 包中的包装类的相应方法。如：将一个数字字符串转化为整数或浮点数时。
+
+1.1 Integer 类
+整数包装类是 Integer 类，包含了常数属性、整型属性（int）的各种操作方法以及构造方法。
+
+1.1.1 构造方法
+（1）public Integer(int i) 由整型数值构造 Integer 类对象。
+（2）public Integer(String S) 由数字字符串构造相应的 Integer 类对象。
+
+例如：
+Integer i = new Integer(1234);
+Integer i = new Integer(“1234”);
+
+1.1.2 常用方法
+（1）public static int parseInt(String s) 把数字字符串 s 转换为整数。
+（2）public static int parseInt(String s,int radix) 把数字字符串转换为一个 radix 指定进制整数。
+（3）public static Integer valueOf(String s) 把数字字符串 s 转换为整型对象。
+（4）public static Integer valueOf(String s,int radix) 把数组字符串 s 转换为一个 radix 指定进制的整型对象。
+（5）public static String toString(int i) 把整数 i 转换为十进制形式的字符串。
+（6）public static String toBinaryString(int i) 把整数 i 转换为二进制形式的字符串。
+（7）public static String toOctalString(int i) 把整数 i 转换为八进制形式的字符串。
+（8）public static String toHexString(int i) 把整数 i 转换为十六进制形式的字符串。
+（9）public int intValue() 把整数对象的值作为整数返回。
+Integer 包装类的应用：
+
+public class IntegerDeme{
+  public static void main(String[] args){
+  Integer a1 = new Integer(5);
+  Integer a2 = new Integer("5");
+  int i1 = a1.intValue;
+  int i2 = a2.intValue;
+  Integer a = Integer.valueOf("123");
+  int i3 = a.intValue();
+  int i4 = Integer.parseInt("123");
+  String binStr = Integer.toBinaryString(128);
+  String octStr = Integer.toOctalString(128);
+  String hexStr = Integer.toHexString(128);
+  System.out.println("i1 = "+i1);
+  System.out.println("i2 = "+i2);
+  System.out.println("i3 = "+i3);
+  System.out.println("i4 = "+i4);
+  System.out,println("binStr = "+binStr);
+  System.out.println("octStr = "+octStr);
+  System.out.println("hexStr = "+hexStr);
+  }
+}
+
+1.2 Double 类
+实数包装类是 Double 类，包含了常量属性、实数型数据操作方法以及构造方法。
+
+1.2.1 构造方法
+（1）public Double(double value) 由浮点类型数值构造 Double 类对象。
+（2）public Double(String s) 由数字字符串构造相应的 Double 类对象。
+
+1.2.2 常用方法
+（1）public static double parseDouble(String s) 把数字字符串 s 转换为浮点数。
+（2）public static String toString(double i) 把浮点数 i 转换为字符串。
+（3）public static String toHexString(double i) 把浮点数 i 转换为十六进制形式的字符串。
+（4）public static Double valueOf(double d) 把浮点数 d 转换为 Double 对象。
+（5）public static Double valueOf(String d) 把字符串 s 转换为 Double 对象。
+（6）public double doubleValue() 返回 Double 对象的浮点数值。
+
+1.3 包装类的特点
+（1）所有的包装类都是 final 类型，因此不能派生它们的子类。
+（2）包装类是不可变类，一个包装类的对象自创后，它所包含的基本数据类型的值就不能改变。
+（3）JDK1.5 允许基本数据类型和包装类型进行混合数学运算。
+————————————————
+版权声明：本文为CSDN博主「卫宫小五」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_44329476/article/details/101671792
