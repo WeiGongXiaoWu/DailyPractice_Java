@@ -1,0 +1,72 @@
+目录
+二、Math 类
+2.1 常量
+2.2 常用方法
+2.2.1 取最小值、最大值
+2.2.2 绝对值
+2.2.3 数值舍入
+2.2.4 幂指数与对数
+2.2.5 三角函数
+二、Math 类
+java.lang包中的 Math 类是一个终态（final）类，它包括的所有方法都是静态（static）方法，可直接通过类名调用。
+
+2.1 常量
+Math 类中提供了两个常量字段，即 E 和 PI 。
+（1）public static final double E 表示自然对数的底数。
+（2）public static final double PI 表示周长与直径之比。
+
+2.2 常用方法
+2.2.1 取最小值、最大值
+（1）public static int max(int val1,int val2) 返回 val1 和 val2 中的最大值。
+（2）public static int min(int val1,int val2) 返回 val1 和 val2 中的最小值。
+
+2.2.2 绝对值
+（1）public static int abs(int a) 返回整数 a 的绝对值。
+（2）这个方法是一个重载方法，参数类型可以是其他基本数据类型。
+
+2.2.3 数值舍入
+（1）public static int round(float a) 返回最接近参数的 int 值，即将其值四舍五入。
+（2）public static long round(double a) 返回最接近参数的 long 值，即将其值四舍五入。
+（3）public static double rint(double a) 返回值最接近参数并且是整数的 double 值。
+（4）public static double ceil(double a) 返回大于或等于该参数的 double 值，该值是个整数。
+（5）public static double floor(double a) 返回小于或等于该参数的 double 值，该值是一个整数。
+round 和 rint 方法表示四舍五入操作；ceil 方法是向上取数；floor 方法是向下取数。
+
+2.2.4 幂指数与对数
+（1）public static double exp(double a) 求常数 e 的 a 次方。
+（2）public static double pow(double a,double b) 求 a 的 b 次方。
+（3）public static double log(double a) 求以常数 e 为底的 a 的对数。
+（4）public static double log10(double a) 求以常数10为底的 a 的对数。
+（5）public static double sqrt(double a) 返回 a 的平方根。
+（6）public static double cbrt(double a) 返回 a 的立方根。
+
+2.2.5 三角函数
+Math 类提供了正弦、余弦、正切以及它们的反函数，这些函数不接受角度值，只能输入弧度值。所以，这个类还提供了角度与弧度互换的方法。
+（1）public static double sin(double a) 求正切值。
+（2）public static double cos(double a) 求余弦值。
+（3）public static double tan(double a) 求正切值。
+（4）public static double asin(double a) 求反正切值。
+（5）public static double acos(double a) 求反余弦值。
+（6）public static double atan(double a) 求反正切值。
+（7）public static double toDegrees(double angrad) 将弧度近似转变为角度。
+（8）public static double toRadians(double angdeg) 将角度近似转变为弧度。
+Math 类的应用：
+
+public class MathDemo{
+  public static void main(String[] args){
+    System.out.println("Math.min(19,7) = "+Math.min(19,7));
+    System.out.println("Math.max(9,4) = "+Math.max(9,7));
+    System.out.println("MAth.round(9,4) = "+Math.round(9,4));
+    System.out.println("Math.rint(9,4) = "+Math.rint(9,4));
+    System.out.println("Math.log(Math.E) = "+MAth.log(Math.E));
+    System.out.println("Math.exp(Math.E) = "+Math.exp(Math.E));
+    System.out.println("Math.pow(3,4) = "+Math.pow(3,4));
+    System.out.println("Math.cos(Math.PI/4) = "+Math.cos(Math.PI/4));
+    Systen.out.println("Math.sin(Math.PI/4) = "+Math.sin(Math.PI/4));
+    System.out.println("Math.toDegrees(Math.PI/4) = "+Math.toDegrees(Math.PI/4));
+    System.out.println("Math.toRadians(Math.toDegrees(Math.PI/4)) = "+Math.toRadians(Math.toDegrees(Math.PI/4)));
+    }
+}
+————————————————
+版权声明：本文为CSDN博主「卫宫小五」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_44329476/article/details/101710548
