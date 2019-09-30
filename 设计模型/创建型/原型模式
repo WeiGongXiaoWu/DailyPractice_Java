@@ -29,7 +29,7 @@ abstract class Prototype {
 
 class PrototypeA extends Prototype {
     private String _value = "";
-    public PrototypeA();
+    public PrototypeA(){}
     public PrototypeA(PrototypeA p) {
         _value = p._value;
     } 
@@ -46,7 +46,7 @@ class PrototypeA extends Prototype {
 }
 class PrototypeB extends Prototype {
     private Integer _value = new Integer(-1);
-    public PrototypeB();
+    public PrototypeB(){}
     public PrototypeB(PrototypeB p) {
         _value = p._value;
     } 
