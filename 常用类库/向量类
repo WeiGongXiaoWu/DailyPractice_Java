@@ -1,0 +1,31 @@
+import java.util.*;
+public class Test{
+  public static void main(String[] args){
+    Vector v = new Vector();
+    //建立两个存放学生信息的向量
+    Vector v1 = new Vector();
+    v1.addElement("张三");
+    v1.addElement(new Character('男'));
+    v1.addElement(new Integer(18));
+    Vector v2 = new Vector();
+    v2.addElement("黄小华");
+    v2.addElement(new Character('女'));
+    v2.addElement(new Integer(17));
+    //将两个学生向量添加到向量v中
+    v.addElement(v1);
+    v.addElement(v2);
+    //输出向量v中的信息
+    System.out.println(v);
+    System.out.println("向量元素个数："+v.size());
+    System.out.println("向量当前容量："+v.capacity());
+    //删除向量v中的第二个元素v2
+    v.removeElementAt(1);
+    System.out.println(v);
+    Vector v3 = new Vector();
+    v3.addElement("李军");
+    v3.addElement(new Character('男'));
+    v3.addElement(new Integer(18));
+    v.insertElementAt(v3,1);
+    System.out.println(v);
+  }
+}
