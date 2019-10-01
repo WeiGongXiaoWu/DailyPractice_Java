@@ -1,0 +1,53 @@
+3.2 枚举接口
+枚举接口 Enumeration 定义在 java.util 包中，该接口封装了用于提取枚举对象包含的枚举元素的方法和判断枚举对象中是否含有枚举元素的方法。实现该接口的对象会产生一个枚举元素集合。
+
+用于操作 Enumeration 对象的方法如下：
+（1）boolean hasMoreElements() 判断 Enumeration对象中是否含有元素。
+（2）object nextElement() 返回 Enumeration 对象中的下一个元素。
+
+从 Vector 对象 vector 中创建一个 Enymeration 对象，通过 Enumeration 对象提供的方法读取向量中的元素：
+
+Enumeration enum = vector.elements();
+while(enum.hasMoreElements()){
+  System.out.println(enum.nextElement());
+}
+
+
+
+例如：
+
+import java.util.*;
+public class Test{
+  public static void main(String[] args){
+    Vector v = new Vector();
+  //建立三个存放学生信息的向量
+    Vector v1 = new Vector();
+    v1.addElement("张三");
+    v1.addElement(new Character('男'));
+    v1.addElement(new Integer(18));
+    Vector v2 = new Vector();
+    v2.addElement("黄小华");
+    v2.addElement(new Character('女'));
+    v2.addElement(new Integer(17));
+    Vector v3 = new Vector();
+    v3.addElement("李军");
+    v3.addElement(new Character('男'));
+    v3.addElement(new Integer(18));
+    //将三个学生向量添加到向量v中
+    v.addElement(v1);
+    v.addElement(v2);
+    v.addElement(v3);
+    Enumeration en = v.elements();
+    //输出向量v中的信息
+    while(en.hasMoreElements()){
+      Vector vtemp = (Vector)en.nextElement();
+      Enumeration stuinfo = vtemp.elements();
+      while(stuinfo.hasMoreElements())
+        System.out.print(stuinfo.nextElement() + " ");
+       //输出每一个对象的信息后换行
+      System.out.println();
+    }
+  }
+}
+版权声明：本文为CSDN博主「卫宫小五」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_44329476/article/details/101876079
