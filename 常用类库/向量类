@@ -1,3 +1,67 @@
+三、向量类和枚举接口
+3.1 向量类
+java.util 包中提供了另一种类似于数组的顺序存储的动态数据结构——Vector类。
+
+数组是一种顺序存储的数据结构，但数组只能保存固定数目的元素，数组对象一旦创建，其元素的个数即数组的大小不能被修改。
+
+Vector 类是一组对象的集合，且能够动态的调整自身大小。
+
+向量类优越于数组的主要原因：使用向量是无需声明上限，而且随着存储元素增多，向量的存储空间会自动增加；另外，向量类还提供了许多操作和处理向量元素的方法。
+
+注意：添加到 Vector 中的数据元素必须是引用类型。如果需要把基本数据类型保存到向量，必须使用 Java 的包装类转换成对象。
+
+3.1.1 构造方法
+（1）public Vector() 创建一个向量。其原始容量为0.
+（2）public Vector(int capacity) 创建一个指定初始容量的向量。
+（3）public Vector(int capacity,int capacityIncrement) 创建一个指定初始容量的向量，并且他的容量增量由参数 capacityIncrement 指定。向量容量通常是一个大于向量实际元素个数的整数，容量增量则规定了每当向量元素达到一定数量时，需一次性扩充的向量容量大小。如果容量增量参数为0，则每次向量容量都将增加一倍大小。
+
+3.1.2 常用方法
+一旦创建了向量类的实例，就可以用它的方法来执行插入、删除及查找对象等操作。向量类提供了极为丰富的方法，下面是其中一些主要的方法。
+
+向向量添加元素
+（1）public void addElement(Object obj) 把给定对象增加到向量末尾。
+（2）public void insertElement(Object obj,int index)
+
+把对象 obj 插入在序列的指定位置 index 处。如果试图在一个不存在的位置上插入一个元素，则会产生ArrayIndexOutOfBoundsException异常。
+
+修改或删除向量中元素
+（1）public void setElementAt(Object obj,int index)
+
+将向量序列中index位置的元素设置为 obj，此位置的原有对象丢失，向量序列中其他元素的位置不变；若指定位置不存在，抛出ArrayIndexOutOfBoundsException异常。
+
+（2）public void removeElementAt(int index)
+
+删除向量序列中指定位置 index 处的元素，同时后面所有元素前移一个位置；若指定位置不存在，抛出ArrayIndexOutOfBoundsException异常。
+
+（3）public boolean removeElement(Object obj)
+
+删除向量序列中第一个与指定对象 obj 相同的元素，同时后面所有元素前移一个位置；若删除对象不存在，则返回 false，否则为 true。
+
+（4）public void removeAllElements() 删除向量序列中所有的元素。
+
+查找向量中元素
+（1）public Object elementAt(int index) 返回指定位置 index 处的对象。
+注意由于返回的是 Object 对象，在使用之前通常需要进行强制类型转换，将返回的对象引用转换成 Object 类的某个具体子类的对象。例如： String str = (String)MyVector.elementAt(0).
+
+（2）public int indexOf(Object obj) 从向量序列中返回指定对象 obj 的下标；若对象不存在，返回-1。
+
+（3）public int indexOf(Object obj,int start_index) 从指定位置开始向后搜索，返回所找到的第一个与指定对象 obj 相同元素的下标；若未找到，返回-1。
+
+访问向量中的元素
+（1）public Object firstElement() 返回向量的第一个元素；若向量为空，抛出 NoSuchElementException 异常。
+（2）public Object lastElement() 返回向量的最后一个元素；若向量为空，抛出 NoSuchElementException 异常。
+（3）public boolean isEmpty() 判断向量中是否有元素；若向量不包括任何元素，返回 true，否则返回 false。
+（4）public Enumeration elements() 返回包含 Vector 中所有元素的枚举对象。
+
+向量大小的操作
+向量大小有两个概念：一个是存储向量中实际元素的个数；另一个是向量的最大容量。
+（1）public void trimToSize() 把向量容量调整到正好等于向量元素个数，以压缩向量的存储空间。
+（2）public void setSize(int newSize) 设置向量大小。如果所给参数比原来向量的元素个数少，则向量被压缩，多余的元素将被截断；如果所给参数比原来向量个数多，则新增的向量元素将置为 null。
+（3）public int capacity() 返回向量容量大小。
+（4）public int size() 返回向量中的元素个数。
+
+例题：首先创建存放三位学生信息的向量，然后，再把这三个向量添加到一个向量中，最后进行有关向量的元素访问、删除和插入操作。
+
 import java.util.*;
 public class Test{
   public static void main(String[] args){
@@ -29,3 +93,5 @@ public class Test{
     System.out.println(v);
   }
 }
+版权声明：本文为CSDN博主「卫宫小五」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_44329476/article/details/101872924
