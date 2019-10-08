@@ -1,0 +1,50 @@
+// Copyright(C) 2000-2003 Yoshinori Oota All rights reserved.
+
+import java.awt.*;
+
+public class AdapterSample
+{
+    static public Target Create(String str)
+    {
+        if (str.equals("Target"))
+        {
+            return new Target();
+        }
+        else if (str.equals("Adapter"))
+        {
+            return new Adapter();
+        }
+        return null;
+    }
+
+    static public void main(String[] args)
+    {
+		// create two objects of type Target (superclass) and Adapter (subclass)
+        Target target1 = Create("Target");
+        Target target2 = Create("Adapter");
+
+        // to see if the operations are the same
+        target1.Operation();
+        target2.Operation();
+    }
+}
+
+
+class Target
+{
+    public void Operation()
+    {
+        System.out.println("Hello Design Pattern");
+    }
+}
+
+class Adapter extends Target
+{
+    private Frame _adaptee = new Frame("AdapterSample");
+    public void Operation()
+    {
+        _adaptee.add(new Label("Hello Design Pattern", Label.CENTER));
+        _adaptee.setSize(150, 100);
+        _adaptee.show();
+    }
+}
