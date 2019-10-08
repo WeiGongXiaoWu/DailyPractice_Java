@@ -1,0 +1,61 @@
+// Copyright(C) 2000-2003 Yoshinori Oota All rights reserved.
+
+import java.awt.*;
+public class BridgeSample
+{
+    static public void main(String[] args)
+    {
+       Abstraction abstraction = new Abstraction("A");
+       abstraction.Operation();
+
+       abstraction = new Abstraction("B");
+       abstraction.Operation();
+    }
+}
+
+class Abstraction
+{
+    private Implementor _imp = null;
+    public Abstraction(String sw)
+    {
+        if (sw.equals("A"))
+        {
+			// create an object of ImplementorA
+            _imp = new ImplementorA();
+        }
+        else if (sw.equals("B"))
+        {
+			// create an object of ImplementorB
+            _imp = new ImplementorB();
+        }
+    }
+    public void Operation()
+    {
+        _imp.OperationImp();
+    }
+}
+
+// abstract class called by class Abstraction
+abstract class Implementor
+{
+    abstract public void OperationImp();
+}
+
+class ImplementorA extends Implementor
+{
+    public void OperationImp()
+    {
+        System.out.println("Call ImplementorA::OperationImp()");
+    }
+}
+
+class ImplementorB extends Implementor
+{
+    private Frame _frame = new Frame("BridgeSample");
+    public void OperationImp()
+    {
+        _frame.add(new Label("Call ImplementorB::OperationImp()", Label.CENTER));
+        _frame.setSize(250, 100);
+        _frame.show();
+    }
+}
